@@ -7,13 +7,28 @@ import { styles } from './styles';
 import { Logo } from '../../components/Logo';
 import { phrases } from '../../utils/phrases';
 
+import api from '../../services/api';
+
 export function Home() {
 
   const [index, setIndex] = useState<number>(Math.floor(Math.random() * phrases.length + 1));
+  const [getPhrases, setGetPhrases ] = useState<number>();
+
 
   function changePhrases() {
     setIndex(Math.floor(Math.random() * phrases.length + 1))
   }
+
+  const apiGetPhrases = async () => {
+    try {
+      const result = await api.get('http://localhost:3000/phrases/random');
+      console.log(result);  
+
+    } catch(err) {
+        console.error(err);
+    }
+};
+  
 
   return (
     <Background>
