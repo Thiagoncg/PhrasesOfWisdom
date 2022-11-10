@@ -20,12 +20,11 @@ app.get("/phrases/:id/find", (request, response) => {
 //Sorteia uma frase dentro da lista de frases
 app.get("/phrases/random", (request, response) => {
     const index = (Math.floor(Math.random() * phrases.phrases.length + 1));
-
     console.log(index);
-
     return response.json(phrases.phrases[index]); 
 });
 
+//Listagem da url
 app.listen(port, () => {
     console.log("Servidor iniciado na porta 3000: http://localhost:3000/phrases");
 });
